@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>My Cart - InstrumentArt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #0b0a08;
+            color: white;
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        header {
+            width: 100%;
+            padding: 22px;
+            text-align: center;
+            background-color: #0b0a08;
+            color: #d9a545;
+            border-bottom: 1px solid #d9a545;
+        }
+
+        header h1 {
+            font-family: "Cinzel", serif;
+            font-size: 35px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        header i {
+            font-size: 32px;
+            margin-right: 10px;
+        }
+
+        main {
+            width: 100%;
+            padding: 25px;
+        }
+
+        .parent {
+            width: 100%;
+        }
+
+        .child {
+            width: 100%;
+            background-color: #11100d;
+            border: 1px solid #d9a545;
+            box-shadow: 0 0 15px rgba(217, 165, 69, .12);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: .3s;
+        }
+
+        .child:hover {
+            box-shadow: 0 0 22px rgba(217, 165, 69, .22);
+            border-color: #d9a545;
+        }
+
+        .child img {
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #d9a545;
+        }
+
+        .info {
+            flex: 1;
+        }
+
+        .info h2 {
+            font-family: "Cinzel", serif;
+            color: #d9a545;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            text-align: justify;
+            font-size: 20px;
+            line-height: 1.4;
+            padding: 5px 0;
+            color: white;
+        }
+
+        .price {
+            color: #d9a545;
+            font-family: "Cinzel", serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .quantity {
+            margin-top: 10px;
+        }
+
+        .quantity label {
+            font-family: "Cinzel", serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+        }
+
+        select {
+            width: 80px;
+            padding: 8px;
+            margin-left: 10px;
+            border-radius: 4px;
+            border: 1px solid #d9a545;
+            background-color: #0b0a08;
+            color: white;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 17px;
+        }
+
+        .item-total {
+            font-family: "Cinzel", serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #d9a545;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            height: 45px;
+            width: 140px;
+            color: #d9a545;
+            background-color: #0b0a08;
+            border: 1px solid #d9a545;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: "Cinzel", serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+            transition: .3s;
+        }
+
+        button:hover {
+            background-color: #d9a545;
+            color: #0b0a08;
+        }
+
+        .summary {
+            width: 100%;
+            background-color: #11100d;
+            border: 1px solid #d9a545;
+            box-shadow: 0 0 15px rgba(217, 165, 69, .12);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .summary h2 {
+            font-family: "Cinzel", serif;
+            color: #d9a545;
+            margin-bottom: 20px;
+            font-size: 27px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            padding: 10px 0;
+            color: white;
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        .summary-row span:last-child {
+            color: #d9a545;
+            font-family: "Cinzel", serif;
+            font-weight: 600;
+        }
+
+        .grand-total {
+            font-family: "Cinzel", serif;
+            font-size: 27px;
+            font-weight: 700;
+            color: #d9a545;
+            border-top: 1px solid #d9a545;
+            margin-top: 10px;
+            padding-top: 15px;
+        }
+
+        .checkout {
+            width: 220px;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+
+        footer {
+            width: 100%;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            background-color: #0b0a08;
+            color: #d9a545;
+            border-top: 1px solid #d9a545;
+        }
+
+        footer p {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 18px;
+        }
+
+        @media(max-width:900px) {
+            .child {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info p {
+                text-align: center;
+            }
+
+            .buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .item-total {
+                margin: 5px 0;
+            }
+        }
+
+        @media(max-width:600px) {
+            main {
+                padding: 12px;
+            }
+
+            .child {
+                padding: 15px;
+            }
+
+            .child img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .info h2 {
+                font-size: 22px;
+            }
+
+            .info p {
+                font-size: 18px;
+            }
+
+            .summary {
+                padding: 18px;
+            }
+
+            .summary-row {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><i class="fa-solid fa-cart-shopping"></i> My Cart</h1>
+    </header>
+    <main>
+        <div class="parent">
+            <div class="child">
+                <img src="https://i.pinimg.com/736x/92/bc/9a/92bc9a39aafe2c35681832e7650a2c10.jpg"
+                    alt="Acoustic Guitar">
+                <div class="info">
+                    <h2>Acoustic Guitar</h2>
+                    <p>A beautiful acoustic guitar suitable for beginners, students and professional musicians.</p>
+                    <p class="price">₹8,999</p>
+                    <div class="quantity">
+                        <label>Quantity:</label>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="item-total">₹8,999</div>
+                <div class="buttons">
+                    <button>Remove</button>
+                    <button>Save for Later</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+            <div class="child">
+                <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0" alt="Electronic Keyboard">
+                <div class="info">
+                    <h2>Electronic Keyboard</h2>
+                    <p>A 61-key electronic keyboard with multiple tones, rhythms and recording features.</p>
+                    <p class="price">₹12,499</p>
+                    <div class="quantity">
+                        <label>Quantity:</label>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="item-total">₹12,499</div>
+                <div class="buttons">
+                    <button>Remove</button>
+                    <button>Save for Later</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+            <div class="child">
+                <img src="https://i.pinimg.com/736x/e0/93/15/e09315ca6b538cf2e345630d015e1060.jpg" alt="Classic Violin">
+                <div class="info">
+                    <h2>Classic Violin</h2>
+                    <p>A premium wooden violin designed for students, beginners and experienced violin players.</p>
+                    <p class="price">₹6,499</p>
+                    <div class="quantity">
+                        <label>Quantity:</label>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="item-total">₹6,499</div>
+                <div class="buttons">
+                    <button>Remove</button>
+                    <button>Save for Later</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+            <div class="child">
+                <img src="https://i.pinimg.com/1200x/16/24/d5/1624d5d1fbbeb6fb433ed92a5b0201df.jpg" alt="Drum Set">
+                <div class="info">
+                    <h2>Drum Set</h2>
+                    <p>Complete drum set suitable for music practice, performances and studio sessions.</p>
+                    <p class="price">₹18,999</p>
+                    <div class="quantity">
+                        <label>Quantity:</label>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="item-total">₹18,999</div>
+                <div class="buttons">
+                    <button>Remove</button>
+                    <button>Save for Later</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="summary">
+            <h2>Order Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>₹46,996</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span>₹0</span>
+            </div>
+            <div class="summary-row">
+                <span>Discount</span>
+                <span>₹1,000</span>
+            </div>
+            <div class="summary-row grand-total">
+                <span>Grand Total</span>
+                <span>₹45,996</span>
+            </div>
+            <center>
+                <button class="checkout">Proceed to Checkout</button>
+            </center>
+        </div>
+    </main>
+    <footer>
+        <p>© 2026 InstrumentArt | Where Every Sound Begins</p>
+    </footer>
+</body>
+
+</html>
