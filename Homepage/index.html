@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrumart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header id="header">
+
+        <div class="logo">
+            <img src="assets/logo.png" alt="Instrumart">
+        </div>
+
+        <!-- Search box and search icon -->
+        <div class="navContainer">
+
+            <nav class="navLinks">
+                <a href="#">Home</a>
+                <a href="categories/test.html">Categories</a>
+                <a href="#">My Cart</a>
+                <a href="#">Services</a>
+                <a href="#">Rent Instrument</a>
+            </nav>
+
+            <div class="searchIcon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+        </div>
+
+        <!-- Icons for account and mycart -->
+        <div class="headerRight">
+
+            <div class="headerOption">
+                <i class="fa-regular fa-user"></i>
+                <span>My Account</span>
+            </div>
+
+            <div class="headerOption">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>My Cart</span>
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero">
+
+        <img src="assets/hero.png" alt="Where Vintage Meets Luxury" class="heroImage">
+
+        <div class="heroContent">
+
+            <p class="heroTag">WHERE</p>
+
+            <h1 class="heroTitle">
+                <span class="heroHighlight">VINTAGE</span>
+                MEETS LUXURY
+            </h1>
+
+            <div class="heroDivider"></div>
+
+            <p class="heroText">
+                Premium instruments.<br>
+                Timeless craftsmanship.<br>
+                For every musician.
+            </p>
+
+            <button type="button" class="exploreBtn">
+                EXPLORE COLLECTIONS <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+        <!-- Features strip: shipping, returns, payment, support -->
+    <section class="featuresStrip">
+
+        <div class="featureItem">
+            <div class="featureIcon">
+                <i class="fa-solid fa-truck"></i>
+            </div>
+            <div class="featureText">
+                <h4>Free Shipping</h4>
+                <p>On orders over ₹4999</p>
+            </div>
+        </div>
+
+        <div class="featureDivider"></div>
+
+        <div class="featureItem">
+            <div class="featureIcon">
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+            <div class="featureText">
+                <h4>Easy Returns</h4>
+                <p>30-day return policy</p>
+            </div>
+        </div>
+
+        <div class="featureDivider"></div>
+
+        <div class="featureItem">
+            <div class="featureIcon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="featureText">
+                <h4>Secure Payment</h4>
+                <p>100% secure checkout</p>
+            </div>
+        </div>
+
+        <div class="featureDivider"></div>
+
+        <div class="featureItem">
+            <div class="featureIcon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <div class="featureText">
+                <h4>24/7 Support</h4>
+                <p>We are here to help</p>
+            </div>
+        </div>
+
+    </section>
+
+        <!-- Shop by category section -->
+    <section class="categorySection">
+
+        <h2 class="categoryHeading">
+            SHOP BY CATEGORY
+            <span class="categoryUnderline"></span>
+        </h2>
+
+        <div class="categoryContainer">
+
+            <div class="categoryCard">
+                <img src="assets/guitar.png" alt="Guitars">
+                <p>Guitars</p>
+            </div>
+
+            <div class="categoryCard">
+                <img src="assets/keyboard.png" alt="Keyboards">
+                <p>Keyboards</p>
+            </div>
+
+            <div class="categoryCard">
+                <img src="assets/drums.png" alt="Drums">
+                <p>Drums</p>
+            </div>
+
+            <div class="categoryCard">
+                <img src="assets/studio.png" alt="Studio">
+                <p>Studio</p>
+            </div>
+
+            <div class="categoryCard">
+                <img src="assets/brass.png" alt="Brass & Winds">
+                <p>Brass & Winds</p>
+            </div>
+
+        </div>
+
+    </section>
+
+        <!-- Promo banners: Shop Deals + Explore Vintage -->
+
+    <section class="promoSection">
+
+        <div class="promoCard promoDeals">
+            <img src="assets/sale.png" alt="Modern Gear Deals">
+
+            <div class="promoContent">
+                <h3>MODERN GEAR.<br>TIMELESS PERFORMANCE.</h3>
+                <p class="promoDiscount">UP TO 30% OFF</p>
+
+                <button type="button" class="promoBtn">
+                    SHOP DEALS <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="promoCard promoVintage">
+            <img src="assets/vintage.png" alt="Vintage Collection">
+
+            <div class="promoContentVintage">
+                <h3>VINTAGE COLLECTION</h3>
+                <p class="promoSub" style="color:black">Rare instruments with history...</p>
+
+                <button type="button" class="promoBtnVintage">
+                    EXPLORE VINTAGE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+           <!-- Featured products section -->
+    <section class="productSection">
+
+        <h2 class="categoryHeading">
+            FEATURED PRODUCTS
+            <span class="categoryUnderline"></span>
+        </h2>
+
+        <div class="productWrapper">
+
+            <div class="productContainer">
+
+                <div class="productCard">
+                    <span class="discountBadge">-10%</span>
+
+                    <img src="assets/guitar.png" alt="Gibson Les Paul Standard">
+
+                    <div class="productInfo">
+                        <p class="productName">Gibson Les Paul Standard</p>
+                        <p class="productBrand">Gibson</p>
+
+                        <div class="ratingRow">
+                            <span class="stars">★★★★★</span>
+                            <span class="ratingCount">(120)</span>
+                        </div>
+
+                        <div class="priceRow">
+                            <p class="productPrice">₹1,99,999</p>
+                            <div class="cartIcon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productCard">
+                    <span class="discountBadge">-15%</span>
+
+                    <img src="assets/keyboard.png" alt="Yamaha Digital Keyboard">
+
+                    <div class="productInfo">
+                        <p class="productName">P-125 Digital Piano</p>
+                        <p class="productBrand">Yamaha</p>
+
+                        <div class="ratingRow">
+                            <span class="stars">★★★★★</span>
+                            <span class="ratingCount">(98)</span>
+                        </div>
+
+                        <div class="priceRow">
+                            <p class="productPrice">₹58,499</p>
+                            <div class="cartIcon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productCard">
+                    <span class="discountBadge">-8%</span>
+
+                    <img src="assets/drums.png" alt="Pearl Export Drum Set">
+
+                    <div class="productInfo">
+                        <p class="productName">Export Drum Set</p>
+                        <p class="productBrand">Pearl</p>
+
+                        <div class="ratingRow">
+                            <span class="stars">★★★★★</span>
+                            <span class="ratingCount">(86)</span>
+                        </div>
+
+                        <div class="priceRow">
+                            <p class="productPrice">₹45,999</p>
+                            <div class="cartIcon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productCard">
+                    <span class="discountBadge">-12%</span>
+
+                    <img src="assets/studio.png" alt="Studio Condenser Microphone">
+
+                    <div class="productInfo">
+                        <p class="productName">NT1-A Studio Microphone</p>
+                        <p class="productBrand">Rode</p>
+
+                        <div class="ratingRow">
+                            <span class="stars">★★★★★</span>
+                            <span class="ratingCount">(85)</span>
+                        </div>
+
+                        <div class="priceRow">
+                            <p class="productPrice">₹16,499</p>
+                            <div class="cartIcon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productCard">
+                    <span class="discountBadge">-20%</span>
+
+                    <img src="assets/brass.png" alt="Brass Instrument Collection">
+
+                    <div class="productInfo">
+                        <p class="productName">Brass & Winds Collection</p>
+                        <p class="productBrand">Selmer</p>
+
+                        <div class="ratingRow">
+                            <span class="stars">★★★★★</span>
+                            <span class="ratingCount">(64)</span>
+                        </div>
+
+                        <div class="priceRow">
+                            <p class="productPrice">₹1,24,999</p>
+                            <div class="cartIcon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+      <!-- Top brands section -->
+    <section class="brandsSection">
+
+        <h2 class="categoryHeading">
+            TOP BRANDS
+            <span class="categoryUnderline"></span>
+        </h2>
+
+        <div class="brandsRow">
+
+            <div class="brandsImageBox">
+                <img src="assets/brands.png" alt="Top Brands">
+            </div>
+
+            <div class="legendsBox">
+
+                <img src="assets/legend1.png" alt="Legend Artist 1" class="legendImage legendImageOne">
+                <img src="assets/legend2.png" alt="Legend Artist 2" class="legendImage legendImageTwo">
+
+            </div>
+
+        </div>
+
+    </section>
+      
+        <!-- Customer reviews section -->
+    <section class="reviewsSection">
+
+        <h2 class="categoryHeading">
+            WHAT OUR CUSTOMERS SAY
+            <span class="categoryUnderline"></span>
+        </h2>
+
+        <div class="reviewsTrack">
+
+            <div class="reviewsSlide">
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">The quality and attention to detail is unmatched. Best guitar I've ever owned!</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Alex R.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Found a rare vintage saxophone in perfect condition. Truly a treasure!</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Priya S.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Excellent customer service and fast delivery. Highly recommended!</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Daniel K.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">The keyboard I ordered arrived perfectly packed and sounds incredible.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Meera T.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Great range of brass instruments, and the staff really know their craft.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Rohit V.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">My drum kit arrived earlier than expected, flawless condition. Will order again.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Sara J.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Bought a studio mic here — crystal clear sound and very fair pricing.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Kevin M.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Duplicate slide for seamless infinite loop -->
+            <div class="reviewsSlide" aria-hidden="true">
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">The quality and attention to detail is unmatched. Best guitar I've ever owned!</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Alex R.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Found a rare vintage saxophone in perfect condition. Truly a treasure!</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Priya S.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Excellent customer service and fast delivery. Highly recommended!</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Daniel K.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">The keyboard I ordered arrived perfectly packed and sounds incredible.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        
+                        <span>Meera T.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Great range of brass instruments, and the staff really know their craft.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                       
+                        <span>Rohit V.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">My drum kit arrived earlier than expected, flawless condition. Will order again.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        <span>Sara J.</span>
+                    </div>
+                </div>
+
+                <div class="reviewCard">
+                    <i class="fa-solid fa-quote-left quoteIcon"></i>
+                    <p class="reviewText">Bought a studio mic here — crystal clear sound and very fair pricing.</p>
+                    <div class="reviewStars">★★★★★</div>
+                    <div class="reviewUser">
+                        <span>Kevin M.</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footerContainer">
+
+            <!-- About column -->
+            <div class="footerColumn">
+                <h4 class="footerHeading">ABOUT INSTRUMART</h4>
+                <p class="footerText">
+                    We bring together the finest modern instruments and rare vintage pieces.
+                    Crafted for musicians, curated for you.
+                </p>
+
+                <div class="socialIcons">
+                    <a href="#" class="socialIcon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="socialIcon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="socialIcon"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="socialIcon"><i class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links column -->
+            <div class="footerColumn">
+                <h4 class="footerHeading">QUICK LINKS</h4>
+                <ul class="footerLinks">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">My Cart</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Rent Instrument</a></li>
+                </ul>
+            </div>
+
+            <!-- Customer Service column -->
+            <div class="footerColumn">
+                <h4 class="footerHeading">CUSTOMER SERVICE</h4>
+                <ul class="footerLinks">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Us column -->
+            <div class="footerColumn">
+                <h4 class="footerHeading">CONTACT US</h4>
+                <ul class="footerContact">
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+1 234 567 8900</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>support@instrumart.com</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>123 Music Street,<br>Melody City, MC 56789</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter column -->
+            <div class="footerColumn">
+                <h4 class="footerHeading">NEWSLETTER</h4>
+                <p class="footerText">
+                    Subscribe to get updates on new arrivals and exclusive offers.
+                </p>
+
+                <div class="newsletterBox">
+                    <input type="email" placeholder="Enter your email address">
+                    <button type="button" class="subscribeBtn">SUBSCRIBE</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footerBottom">
+            <p>© 2026 Instrumart. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+</body>
+</html>

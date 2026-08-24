@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicHub — Rent Instruments</title>
+    <style>
+        :root {
+            --bg: #0d0a08;
+            --panel: #15100c;
+            --line: #3a2c17;
+            --gold: #c9973f;
+            --gold-bright: #e6b95c;
+            --cream: #f3e9d6;
+            --muted: #a8998a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--cream);
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 48px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--gold);
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 22px;
+            letter-spacing: 1px;
+            color: var(--gold-bright);
+            font-variant: small-caps;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 11px;
+            color: var(--muted);
+            font-family: Georgia, serif;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-variant: small-caps;
+            letter-spacing: 1px;
+            font-size: 15px;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+            transition: border-color .2s, color .2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--gold-bright);
+            border-color: var(--gold);
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .header-icons svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+            fill: none;
+            cursor: pointer;
+        }
+
+        .cart-wrap {
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--gold-bright);
+            color: #241a0c;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 1px 6px;
+            border-radius: 50%;
+        }
+
+        /* ---------- LAYOUT ---------- */
+        .page {
+            display: flex;
+            gap: 32px;
+            padding: 32px 48px;
+            align-items: flex-start;
+        }
+
+        /* ---------- SIDEBAR ---------- */
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 26px 26px 30px;
+        }
+
+        .sidebar h2 {
+            margin: 0 0 16px;
+            font-size: 20px;
+            color: var(--gold-bright);
+            font-variant: small-caps;
+            letter-spacing: 1px;
+        }
+
+        .cat-list {
+            list-style: none;
+            margin: 0 0 22px;
+            padding: 0;
+        }
+
+        .cat-list li {
+            padding: 8px 0 8px 14px;
+            color: var(--muted);
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all .2s;
+        }
+
+        .cat-list li:hover {
+            color: var(--cream);
+        }
+
+        .cat-list li.active {
+            color: var(--gold-bright);
+            border-left-color: var(--gold);
+            font-weight: bold;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--line);
+            margin: 18px 0;
+        }
+
+        .sidebar h3 {
+            margin: 0 0 14px;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 10px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--gold);
+        }
+
+        .duration-options label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--muted);
+            padding: 6px 0;
+            cursor: pointer;
+        }
+
+        .duration-options input[type="checkbox"] {
+            accent-color: var(--gold);
+            width: 15px;
+            height: 15px;
+        }
+
+        .duration-options label:hover {
+            color: var(--cream);
+        }
+
+        .apply-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold-bright);
+            font-variant: small-caps;
+            letter-spacing: 1px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .apply-btn:hover {
+            background: var(--gold);
+            color: #1a1208;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .main-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .main-top h1 {
+            margin: 0;
+            font-size: 32px;
+            color: var(--gold-bright);
+            font-variant: small-caps;
+            letter-spacing: 1px;
+        }
+
+        .main-top p {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .sort-select select {
+            background: var(--panel);
+            color: var(--cream);
+            border: 1px solid var(--line);
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* ---------- SCROLLING CARD ROW ---------- */
+        .card-scroll-wrap {
+            margin-top: 26px;
+            position: relative;
+        }
+
+        .card-row {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            padding-bottom: 18px;
+            scroll-behavior: smooth;
+        }
+
+        .card-row::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .card-row::-webkit-scrollbar-track {
+            background: var(--panel);
+            border-radius: 4px;
+        }
+
+        .card-row::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        .card {
+            flex: 0 0 280px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--panel);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: transform .2s, border-color .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+
+        .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border: 1px solid var(--gold);
+            background: rgba(13, 10, 8, .85);
+            color: var(--gold-bright);
+            font-size: 12px;
+            font-weight: bold;
+            padding: 6px 9px;
+            text-align: center;
+            line-height: 1.1;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .card-body h3 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--gold-bright);
+            font-variant: small-caps;
+            letter-spacing: .5px;
+        }
+
+        .card-body p.desc {
+            margin: 0;
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.4;
+            min-height: 36px;
+        }
+
+        .price-line {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .price-line .price {
+            font-size: 20px;
+            color: var(--gold-bright);
+            font-weight: bold;
+        }
+
+        .price-line .unit {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .deposit {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .deposit strong {
+            color: var(--cream);
+        }
+
+        .duration-select {
+            margin-top: 8px;
+        }
+
+        .duration-select label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .duration-select select {
+            width: 100%;
+            background: var(--bg);
+            color: var(--cream);
+            border: 1px solid var(--line);
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .rent-btn {
+            margin-top: 12px;
+            width: 100%;
+            padding: 11px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold-bright);
+            font-variant: small-caps;
+            letter-spacing: 1px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background .2s, color .2s;
+        }
+
+        .rent-btn:hover {
+            background: var(--gold);
+            color: #1a1208;
+        }
+
+        .rent-btn svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .scroll-hint {
+            text-align: center;
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* ---------- FOOTER STRIP ---------- */
+        .strip {
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid var(--line);
+            padding: 26px 48px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .strip-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .strip-item svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--gold);
+            fill: none;
+        }
+
+        .strip-item strong {
+            display: block;
+            color: var(--cream);
+            font-size: 14px;
+        }
+
+        footer.copy {
+            text-align: center;
+            padding: 16px;
+            font-size: 12px;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+        }
+
+        @media (max-width: 900px) {
+            .page {
+                flex-direction: column;
+                padding: 24px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            header {
+                padding: 16px 20px;
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+
+            nav ul {
+                gap: 18px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M9 3v10.55A4 4 0 1 0 11 17V7h6V3H9z" />
+            </svg>
+            <div class="logo-text">
+                <h1>MusicHub</h1>
+                <span>Sound of Passion</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" class="active">Rent Instruments</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <svg viewBox="0 0 24 24" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+            </svg>
+            <div class="cart-wrap">
+                <svg viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                <span class="cart-badge">3</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="page">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul class="cat-list">
+                <li class="active">Guitars</li>
+                <li>Keyboards</li>
+                <li>Drums</li>
+                <li>Wind Instruments</li>
+                <li>Accessories</li>
+            </ul>
+
+            <hr class="divider">
+
+            <h3>Price Range (per day)</h3>
+            <input type="range" min="100" max="2000">
+            <div class="price-row">
+                <span>₹100</span>
+                <span>₹2,000+</span>
+            </div>
+
+            <hr class="divider">
+
+            <h3>Rental Duration</h3>
+            <div class="duration-options">
+                <label><input type="checkbox"> 1 Week</label>
+                <label><input type="checkbox"> 1 Month</label>
+                <label><input type="checkbox"> Quarterly (3 Months)</label>
+                <label><input type="checkbox"> 6+ Months</label>
+            </div>
+
+            <button class="apply-btn">Apply Filters</button>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main">
+            <div class="main-top">
+                <div>
+                    <h1>Rent Instruments</h1>
+                    <p>High quality instruments for every musician — pay by the day, week, month or quarter.</p>
+                </div>
+                <div class="sort-select">
+                    <select>
+                        <option>Sort by: Popularity</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="card-scroll-wrap">
+                <div class="card-row">
+
+                    <!-- CARD 1 -->
+                    <div class="card">
+                        <div class="card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=500&q=80');">
+                            <div class="badge">POPULAR</div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Acoustic Guitar</h3>
+                            <p class="desc">Perfect for beginners, students and professionals.</p>
+                            <div class="price-line"><span class="price">₹499</span><span class="unit">/ day</span></div>
+                            <div class="deposit">Security Deposit: <strong>₹2,000</strong></div>
+                            <div class="duration-select">
+                                <label>Rental Period</label>
+                                <select>
+                                    <option>1 Week</option>
+                                    <option>1 Month</option>
+                                    <option>Quarterly (3 Months)</option>
+                                </select>
+                            </div>
+                            <button class="rent-btn">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                Rent Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2 -->
+                    <div class="card">
+                        <div class="card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1552422535-c45813c61732?w=500&q=80');">
+                        </div>
+                        <div class="card-body">
+                            <h3>Digital Keyboard</h3>
+                            <p class="desc">88 keys digital keyboard with sustain pedal.</p>
+                            <div class="price-line"><span class="price">₹699</span><span class="unit">/ day</span></div>
+                            <div class="deposit">Security Deposit: <strong>₹2,500</strong></div>
+                            <div class="duration-select">
+                                <label>Rental Period</label>
+                                <select>
+                                    <option>1 Week</option>
+                                    <option>1 Month</option>
+                                    <option>Quarterly (3 Months)</option>
+                                </select>
+                            </div>
+                            <button class="rent-btn">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                Rent Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3 -->
+                    <div class="card">
+                        <div class="card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=500&q=80');">
+                            <div class="badge">NEW</div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Drum Set</h3>
+                            <p class="desc">5-piece drum set with cymbals and stool.</p>
+                            <div class="price-line"><span class="price">₹999</span><span class="unit">/ day</span></div>
+                            <div class="deposit">Security Deposit: <strong>₹3,000</strong></div>
+                            <div class="duration-select">
+                                <label>Rental Period</label>
+                                <select>
+                                    <option>1 Week</option>
+                                    <option>1 Month</option>
+                                    <option>Quarterly (3 Months)</option>
+                                </select>
+                            </div>
+                            <button class="rent-btn">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                Rent Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4 -->
+                    <div class="card">
+                        <div class="card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=500&q=80');">
+                        </div>
+                        <div class="card-body">
+                            <h3>Electric Guitar</h3>
+                            <p class="desc">Great sound, stylish design, includes amplifier.</p>
+                            <div class="price-line"><span class="price">₹599</span><span class="unit">/ day</span></div>
+                            <div class="deposit">Security Deposit: <strong>₹2,000</strong></div>
+                            <div class="duration-select">
+                                <label>Rental Period</label>
+                                <select>
+                                    <option>1 Week</option>
+                                    <option>1 Month</option>
+                                    <option>Quarterly (3 Months)</option>
+                                </select>
+                            </div>
+                            <button class="rent-btn">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                Rent Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 5 -->
+                    <div class="card">
+                        <div class="card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=500&q=80');">
+                            <div class="badge">TRENDING</div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Classical Guitar</h3>
+                            <p class="desc">Perfect for classical music lovers and beginners.</p>
+                            <div class="price-line"><span class="price">₹449</span><span class="unit">/ day</span></div>
+                            <div class="deposit">Security Deposit: <strong>₹1,800</strong></div>
+                            <div class="duration-select">
+                                <label>Rental Period</label>
+                                <select>
+                                    <option>1 Week</option>
+                                    <option>1 Month</option>
+                                    <option>Quarterly (3 Months)</option>
+                                </select>
+                            </div>
+                            <button class="rent-btn">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                Rent Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CARD 6 -->
+                    <div class="card">
+                        <div class="card-img"
+                            style="background-image:url('https://images.unsplash.com/photo-1465225314224-587cd83d322b?w=500&q=80');">
+                        </div>
+                        <div class="card-body">
+                            <h3>Saxophone</h3>
+                            <p class="desc">Rich tone brass saxophone, ideal for jazz.</p>
+                            <div class="price-line"><span class="price">₹899</span><span class="unit">/ day</span></div>
+                            <div class="deposit">Security Deposit: <strong>₹3,500</strong></div>
+                            <div class="duration-select">
+                                <label>Rental Period</label>
+                                <select>
+                                    <option>1 Week</option>
+                                    <option>1 Month</option>
+                                    <option>Quarterly (3 Months)</option>
+                                </select>
+                            </div>
+                            <button class="rent-btn">
+                                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                                Rent Now
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="scroll-hint">◄ Scroll to see more instruments ►</div>
+            </div>
+
+            <div class="strip">
+                <div class="strip-item">
+                    <svg stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13" />
+                    </svg>
+                    <div><strong>Flexible Rentals</strong>Rent for a day, week, or as long as you need</div>
+                </div>
+                <div class="strip-item">
+                    <svg stroke-width="2">
+                        <path d="M23 4v6h-6M1 20v-6h6" />
+                    </svg>
+                    <div><strong>Quality Assured</strong>All instruments are well maintained & sanitised</div>
+                </div>
+                <div class="strip-item">
+                    <svg stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    </svg>
+                    <div><strong>Fast Delivery</strong>Quick pickup & delivery at your doorstep</div>
+                </div>
+                <div class="strip-item">
+                    <svg stroke-width="2">
+                        <path d="M3 11l19-9-9 19-2-8-8-2z" />
+                    </svg>
+                    <div><strong>24/7 Support</strong>We are always here to help</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="copy">© 2026 MusicHub. All rights reserved.</footer>
+
+</body>
+
+</html> this is someshakar code
