@@ -245,6 +245,136 @@
         }
 
 
+        /* Tablet section */
+        @media (max-width: 767px) {
+            body {
+                height: 100svh;
+                border: 0.5px groove #d9a545;
+            }
+
+            header {
+                padding: 15px;
+                font-size: 20px;
+            }
+
+            .container {
+                width: 100%;
+                height: calc(100svh - 79px);
+                box-sizing: border-box;
+                gap: 5px;
+                border: 0.5px groove #d9a545;
+            }
+
+            .left-container {
+                width: 180px;
+                height: calc(100% - 10px);
+                margin: 5px;
+                border: 0.5px solid #d9a545;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+                border-radius: 7px;
+            }
+
+            .type {
+                flex-shrink: 0;
+                border: 0.5px groove #d9a545;
+                width: 100%;
+                height: 140px;
+                border-radius: 5px;
+            }
+
+            .name {
+                position: absolute;
+                top: 20px;
+                left: 18px;
+                font-size: 28px;
+            }
+
+            .right-container {
+                height: calc(100%);
+                padding: 0;
+                margin-left: -9px;
+                box-sizing: border-box;
+                border-radius: 2px;
+            }
+
+            .filters {
+                flex-direction: row;
+                padding: 6px;
+                align-items: center;
+                position: sticky;
+                background-color: #0b0a08;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .categories-head h2 {
+                font-size: 38px;
+                margin: 0;
+                color: #d9a545;
+            }
+
+            .categories-head p {
+                font-size: medium;
+            }
+
+            .filters label {
+                font-size: 18px;
+            }
+
+            .filters select {
+                width: 160px;
+                height: 32px;
+                border: 0.5px solid #d9a545;
+                padding: 3px;
+            }
+
+            .cards-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 10px;
+                column-gap: 5px;
+            }
+
+            .item {
+                width: 270px;
+                height: 480px;
+                border-radius: 7px;
+                border: 0.5px groove #d9a545;
+                padding: 0 10px;
+                transition: 300ms;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .product-img {
+                width: 100%;
+                border: 0.5px groove #d9a545;
+                height: 240px;
+                margin: 13px auto;
+            }
+
+            .offer {
+                width: 50px;
+                height: 50px;
+                padding: 5px;
+                font-weight: bold;
+                border: 0.4px groove #d9a545;
+                border-radius: 3px;
+                top: 18px;
+                right: 15px;
+            }
+
+            .item h1 {
+                font-size: x-large;
+                padding: 0;
+            }
+
+        }
+
+        /* Mobile section */
         @media (max-width: 480px) {
             body {
                 height: 100svh;
@@ -302,7 +432,6 @@
                 margin-left: -9px;
                 box-sizing: border-box;
                 border-radius: 2px;
-                scrollbar-width: none;
             }
 
             .filters {
@@ -332,11 +461,8 @@
             .filters select {
                 width: 130px;
                 height: 27px;
-                background-color: #0b0a08;
                 border: 0.5px solid #d9a545;
-                color: #d9a545;
                 padding: 3px;
-                outline: none;
             }
 
             .cards-container {
@@ -369,7 +495,6 @@
                 height: 30px;
                 padding: 5px;
                 font-size: 9px;
-                color: #d9a545;
                 font-weight: bold;
                 border: 0.4px groove #d9a545;
                 border-radius: 3px;
@@ -501,6 +626,8 @@
                     </select>
                 </div>
             </div>
+
+            <!-- Cards section -->
             <div class="cards-container">
                 <div class="item" id="guiter">
                     <img src="public1/flute1.jpeg" class="product-img" alt="">
@@ -512,10 +639,10 @@
                     <span class="star">&#9733; &#9733; &#9733; &#9733; &#9734;</span><span> (56)</span>
                     <button class="cart"><span>Add To Cart</span></button>
                 </div>
-                <dialog id="details">
+                <!-- <dialog id="details">
                     <h4>This is the content when you click on the button to get the dialog box</h4>
                     <button id="cbtn">Close</button>
-                </dialog>
+                </dialog> -->
                 <div class="item">
                     <img src="public1/guiter1.jpeg" class="product-img" alt="">
                     <div class="offer">22% OFF</div>
@@ -750,7 +877,7 @@
         </main>
     </section>
 
-    <script>
+    <!-- <script>
         let details = document.getElementById('details')
         let cbtn = document.getElementById('cbtn')
         let guiter = document.getElementById('guiter')
@@ -764,7 +891,7 @@
             details.close()
             console.log('Closed')
         })
-    </script>
+    </script> -->
 </body>
 
 </html>
